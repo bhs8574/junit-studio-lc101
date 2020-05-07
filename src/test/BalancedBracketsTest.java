@@ -13,6 +13,7 @@ public class BalancedBracketsTest {
         assertEquals(true, true);
     }
 
+    //Positive tests
     @Test
     public void onlyBracketsReturnsTrue() {
         assertTrue(BalancedBrackets.hasBalancedBrackets("[]"));
@@ -54,6 +55,12 @@ public class BalancedBracketsTest {
     }
 
     @Test
+    public void specialEscapeCharactersBetweenBracketsReturnsTrue() {
+        assertTrue(BalancedBrackets.hasBalancedBrackets("[\'\"\\\t\b\r\f\n]"));
+    }
+
+    //Negative tests
+    @Test
     public void singleOpenBracketReturnsFalse() {
         assertFalse(BalancedBrackets.hasBalancedBrackets("[LaunchCode"));
     }
@@ -76,6 +83,11 @@ public class BalancedBracketsTest {
     @Test
     public void nestedMismatchedBracketsReturnsFalse() {
         assertFalse(BalancedBrackets.hasBalancedBrackets("[La[unc]hC[ode]"));
+    }
+
+    @Test
+    public void singleCloseBracketReturnsFalse() {
+        assertFalse(BalancedBrackets.hasBalancedBrackets("]"));
     }
 
 }
